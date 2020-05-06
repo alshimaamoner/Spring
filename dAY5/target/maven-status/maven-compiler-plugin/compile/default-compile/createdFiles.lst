@@ -1,0 +1,15 @@
+test\dao\CustomQualifier.class
+test\config\Employee.class
+test\config\GeneralManager.class
+test\config\Config.class
+test\config\AppConfig.class
+test\dao\DaoServiceImpl.class
+test\dao\UserDao.class
+test\dao\ProductDao.class
+test\config\DepartmentManager.class
+test\dao\CustomQualifier$Mobile.class
+test\config\Test.class
+test\config\ManagerService.class
+Application.class
+test\config\Manager.class
+test\config\ModelConfig.class

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       default-autowire-candidates="*Dao,*Calculator,*,*Class"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+">
+    <!-- AutoWiring ByName-->
+    <bean id="DaoService" class="calculator.DaoServiceImpl" autowire="byName"></bean>
+    <bean id="userDao" class="calculator.UserDao"/>
+    <!--AutoWiring BYTYPE-->
+<!--    <bean id="parent3" class="calculator.CalculatorImpl" autowire="byType"/>&ndash;&gt;-->
+    <!--AutoWiring By Constructor-->
+    <bean id="parent2" class="calculator.CalculatorImpl" autowire="constructor">
+    </bean>
+    <!--Manage Bean AutoWiring -->
+    <bean id="userDao2" class="calculator.UserDao" autowire-candidate="false"/>
+    <!--Only Candidate for AutoWiring-->
+<!--    <bean id="userDao3" class="calculator.UserDao" primary="true"/>-->
+    <!--Scope Singleton-->
+    <bean id="userDao4" class="calculator.UserDao" scope="singleton"/>
+ <!--Scope ProtoType-->
+    <bean id="userDao8" class="calculator.UserDao" scope="prototype"/>
+    <!--Lazy Intialize-->
+    <bean id="userDao5" class="calculator.UserDao" lazy-init="true"/>
+    <!--Init Method-->
+    <bean id="userDao6" class="calculator.UserDao" init-method="init"/>
+    <!--Destroy Method-->
+    <bean id="userDao7" class="calculator.UserDao" destroy-method="destroy"/>
+    <!--Inheritance-->
+    <bean id="parent6"  class="calculator.Parent" >
+        <property name="name" value="shimaa" />
+        <property name="age" value="23" />
+    </bean>
+<!--Collection-->
+    <bean id="child" class="calculator.Child" parent="parent6" >
+        <property name="address" value="cairo" />
+        <property name="listChild">
+            <list merge="true">
+                <value>javaa</value>
+            </list>
+        </property>
+        <property name="setChild">
+            <set merge="true">
+                <value>javaa</value>
+                <value>javaa</value>
+            </set>
+        </property>
+        <property name="mapChild">
+            <map merge="true">
+                <entry key="4" value="ss" />
+                <entry key="3" value="aa" />
+            </map>
+        </property>
+    </bean>
+
+
+
+    <!--    &lt;!&ndash;Default Constructor&ndash;&gt;-->
+<!--    <bean id="calculatorId" class="calculator.CalculatorImpl">-->
+<!--    </bean>-->
+<!--    &lt;!&ndash; Constructor with Argument&ndash;&gt;-->
+<!--    <bean id="calculatorId2" class="calculator.CalculatorImpl">-->
+<!--        <constructor-arg value="shimaa"/>-->
+<!--    </bean>-->
+<!--    <bean id="calculatorId3" class="calculator.CalculatorImpl">-->
+<!--        <constructor-arg value="1"/>-->
+<!--    </bean>-->
+<!--    <bean id="calculatorId4" class="calculator.CalculatorImpl">-->
+<!--        <constructor-arg value="9.6"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash;Constructor with Type&ndash;&gt;-->
+<!--    <bean id="calculatorId5" class="calculator.CalculatorImpl" >-->
+<!--        <constructor-arg type="int" value="24"/>-->
+<!--    </bean>-->
+<!--    &lt;!&ndash;Constructor with Index&ndash;&gt;-->
+<!--    <bean id="calculatorId6" class="calculator.CalculatorImpl" >-->
+<!--        <constructor-arg index="0" type="java.lang.String" value="Alshimaa"/>-->
+
+<!--    </bean>-->
+<!--    &lt;!&ndash;Factory Method&ndash;&gt;-->
+<!--    <bean id="calculatorId7" class="calculator.CalculatorImpl"-->
+<!--    factory-method="getInstance"-->
+<!--    >-->
+
+
+<!--    </bean>-->
+<!--    &lt;!&ndash; Factory Bean&ndash;&gt;-->
+<!--    <bean id="calculatorId8"-->
+<!--          factory-bean="calculatorId2"-->
+<!--          factory-method="addObject"></bean>-->
+<!--    &lt;!&ndash;Constructor Based Injection&ndash;&gt;-->
+<!--    <bean id="productId" class="calculator.ProductDao"/>-->
+<!--    <bean id="Dao" class="calculator.DaoServiceImpl" >-->
+<!--        <constructor-arg>-->
+<!--            <bean class="calculator.UserDao"/>-->
+<!--        </constructor-arg>-->
+<!--        <constructor-arg ref="productId"></constructor-arg>-->
+
+<!--    </bean>-->
+<!--    &lt;!&ndash;Setter Based Injection&ndash;&gt;-->
+<!--    <bean id="Dao2" class="calculator.DaoServiceImpl" >-->
+<!--      <property name="productDao" ref="productId"></property>-->
+
+<!--    </bean>-->
+<!--    &lt;!&ndash;Circular Dependency&ndash;&gt;-->
+
+<!--    <bean id="a" class="calculator.ClassA" >-->
+<!--       &lt;!&ndash; <constructor-arg ref="b"/>&ndash;&gt;-->
+<!--        <property name="b" ref="b"/>-->
+
+<!--    </bean>-->
+<!--    <bean id="b" class="calculator.ClassB" >-->
+<!--        <property name="a" ref="a"/>-->
+
+<!--    </bean>-->
+<!--    <bean id="b2" class="calculator.CalculatorImpl" p:msg="p">-->
+<!--    </bean>-->
+<!--&lt;!&ndash;Collection&ndash;&gt;-->
+
+</beans>
